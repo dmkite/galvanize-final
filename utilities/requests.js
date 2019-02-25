@@ -35,7 +35,10 @@ const createBody = async () => {
     acct.payments = newPayments[acct.id]
     return acct
   })
-  const centre = newCentres.reduce(centre => centre.id === user.centre_id)
+  let centre
+  if(newCentres.length) centre = newCentres.reduce(centre => centre.id === user.centre_id)
+  else centre = {centre_address_1: null, centre_addrs_2: null}
+
   return {
     id: user.centre_id,
     accounts,

@@ -4,6 +4,12 @@ const id = user.id
 
 
 export default addData = async () => {
+  let accts = await SecureStore.getItemAsync(`_ACCOUNTS_${id}`)
+  if(accts){
+    accts = JSON.parse(accts)
+    if(accts.length) return
+  }
+  
   const accounts = [
     {
       balance: 0,
@@ -1200,11 +1206,9 @@ export default addData = async () => {
         }
       ]
   }
-  await SecureStore.setItemAsync('_CAREGIVERS', JSON.stringify(user))
+  await SecureStore.setItemAsync('_CAREGIVERS', JSON.stringify({'username': user}))
   await SecureStore.setItemAsync(`_ACCOUNTS_${id}`, JSON.stringify(accounts))
   await SecureStore.setItemAsync(`_ATTENDANCE_${id}`, JSON.stringify(attendance))
   await SecureStore.setItemAsync(`_PAYMENTS_${id}`, JSON.stringify(payments))
-
-  console.log('the deed is done, my lord')
 }
 
