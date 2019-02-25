@@ -13,7 +13,6 @@ class DashBoard extends Component{
   constructor(props){
     super(props)
     this.state={
-      fontLoaded: false
     }
   }
   
@@ -26,11 +25,6 @@ class DashBoard extends Component{
   }
 
   componentDidMount = async () => {
-    this.getInfo()
-    await Font.loadAsync({
-      'Raleway-Bold': require('../assets/fonts/Raleway-Bold.ttf')
-    })
-    this.setState({fontLoaded:true})
     this.props.addFees()
     }
 
