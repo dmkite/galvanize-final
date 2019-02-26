@@ -16,19 +16,19 @@ export const signIn = async (username, password, success, failure) => {
   })
     .catch(err => {
       console.log(err)
-      return failure('Sign in unsucessful')
+      return failure('Sign in unsuccessful')
     });
 }
 
 export function signUp(username, password, phone, failure, redirect){
-  const phone_number = '+254' + phone.split('-').join('')
+  const phone_number = '+1' + phone.split('-').join('')
   
   Auth.signUp({
     username,
     password,
     attributes: {
       preferred_username: username,
-      phone_number: '+19802260372' //phone_number replaced with own phone for demo
+      phone_number
     },
     validationData: []  
   })
