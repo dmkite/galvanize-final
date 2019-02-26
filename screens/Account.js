@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {ScrollView, View, Text, TouchableOpacity} from 'react-native'
 import {LinearGradient} from 'expo'
 import {Icon} from 'react-native-elements'
-import {Child, Guardian, EmergencyContact, Rate} from '../components/Forms'
+import {Child, Guardian, EmergencyContact} from '../components/Forms'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {ChildDetails, GuardianDetails, EmergencyContactDetails, RateDetails} from '../components/AccountDetails'
