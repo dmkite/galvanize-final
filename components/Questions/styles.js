@@ -25,11 +25,17 @@ export const styles = {
   },
   inputHolder:{ 
     flexDirection:'row',
-    height:50
+    height:50,
   },
   numberInput:{
     flex:.2,
     height:50,
+    marginRight: 20,
+    color: '#ffffff80',
+    borderBottomWidth: 1,
+    borderColor: '#ffffff80',
+    fontSize: 18,
+    textAlign:'center'
   },
   questionText: {
     fontSize: 18, 

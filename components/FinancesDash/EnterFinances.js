@@ -92,11 +92,11 @@ class EnterFinances extends Component {
             <Text style={styles.btnText}>Cancel</Text>
           </TouchableOpacity>
           {Number(this.state.amount) > 0
-            ? <TouchableOpacity style={[styles.button, { flex: 0.5, marginLeft: 5 }]} onPress={ () => this.props.addExpense({
+            ? <TouchableOpacity style={[styles.button, { flex: 0.5, marginLeft: 5 }]} onPress={ () => Promise.all([this.props.addExpense({
                     date: this.state.date,
                     amount: this.state.amount,
                     memo: this.state.memo
-              })}>
+              }), this.props.changeView()])}>
                 <Text style={styles.btnText}>Add Expense</Text>
               </TouchableOpacity>
             : null                

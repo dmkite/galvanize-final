@@ -78,7 +78,7 @@ class EmergencyContact extends Component{
           style={[styles.input, this.state.focusedOn === 'phone' ? styles.focused : null]}
           value={this.state.phone}
           keyboardType="number-pad"
-          maxLength={11}
+          maxLength={12}
           onFocus={() => {
             this.changeFocus('focus', 'phone')
             this.props.addMargin(-150)
@@ -87,7 +87,7 @@ class EmergencyContact extends Component{
             this.changeFocus('blur', null)
             this.props.addMargin(0)
           }}
-          onChangeText={(text) => this.handleNumberChange(text, 'phone', 2, 6)}
+          onChangeText={(text) => this.handleNumberChange(text, 'phone', 3, 7)}
         />
         <Text style={[styles.label, this.state.focusedOn === 'phone' ? styles.focused : null]}>Nambari ya Simu</Text>  
 
@@ -108,7 +108,7 @@ class EmergencyContact extends Component{
               : null
             }
           </View>
-          :  this.state.phone && this.state.phone.length === 11 && this.state.f_name
+          :  this.state.phone && this.state.phone.length === 12 && this.state.f_name
             ? <View style={{flexDirection: 'row', marginTop:20, marginHorizontal:10}}>
                 <TouchableOpacity style={[styles.button, { flex: .5, marginRight:5 } ]}
                   onPress={() => {

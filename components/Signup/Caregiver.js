@@ -36,6 +36,8 @@ export default class Caregiver extends Component{
           style={[styles.input, this.state.focusedOn === 'username' ? styles.focused : null]}
           value={this.props.username}
           onChangeText={(text) => this.props.handleChangeText(text, 'username')}
+          blurOnSubmit={false}
+          onSubmitEditing={() => this.passwordInput.focus()}
         />
         <Text style={[styles.label, this.state.focusedOn === 'username' ? styles.focused : null]}>Username </Text>
         
@@ -55,6 +57,9 @@ export default class Caregiver extends Component{
             style={[styles.input, {flex:0.9, marginRight:0}, this.state.focusedOn === 'password' ? styles.focused : null]}
             value={this.state.showPassword ? this.props.password : this.props.hiddenPassword}
             onChangeText={(text) => this.props.handlePassword(text)}
+            ref={(input) => this.passwordInput = input}
+            blurOnSubmit={false}
+            onSubmitEditing={() => this.f_nameInput.focus()}
           />
           <View style={[styles.showButton, this.state.focusedOn === 'password' ? styles.focused : null]}>
             <TouchableOpacity onPress={this.showPassword}>
@@ -78,6 +83,9 @@ export default class Caregiver extends Component{
               style={[styles.input, this.state.focusedOn === 'f_name' ? styles.focused : null]}
               value={this.props.f_name}
               onChangeText={(text) => this.props.handleChangeText(text, 'f_name')}
+              ref={(input) => this.f_nameInput = input}
+              blurOnSubmit={false}
+              onSubmitEditing={() => this.l_nameInput.focus()}
             />
             <Text style={[styles.label, this.state.focusedOn === 'f_name' ? styles.focused : null]}>Name</Text>
           </View>
@@ -95,6 +103,9 @@ export default class Caregiver extends Component{
               style={[styles.input, this.state.focusedOn === 'l_name' ? styles.focused : null]}
               value={this.props.l_name}
               onChangeText={(text) => this.props.handleChangeText(text, 'l_name')}
+              ref={(input) => this.l_nameInput = input}
+              blurOnSubmit={false}
+              onSubmitEditing={() => this.phoneInput.focus()}
             />
             <Text style={[styles.label, this.state.focusedOn === 'l_name' ? styles.focused : null]}>Surname</Text>
           </View>
@@ -104,8 +115,7 @@ export default class Caregiver extends Component{
           style={[styles.input, this.state.focusedOn === 'phone' ? styles.focused : null]}
           value={this.props.phone}
           keyboardType="number-pad"
-          maxLength={11}
-          minLength={11}
+          maxLength={12}
           onFocus={() => {
             this.changeFocus('focus', 'phone')
             this.props.addMargin(-375)
@@ -114,10 +124,11 @@ export default class Caregiver extends Component{
               this.changeFocus('blur', null)
               this.props.addMargin(0)
           }}
-          onChangeText={(text) => this.props.handleNumberChange(text, 'phone', 2, 6)}
+          onChangeText={(text) => this.props.handleNumberChange(text, 'phone', 3, 7)}
+          ref={(input) => this.phoneInput = input}
         />
         <Text style={[styles.label, this.state.focusedOn === 'phone' ? styles.focused : null]}>Phone</Text>   
-        {(!!this.props.f_name && !!this.props.l_name && this.props.password.length >= 8 && !!this.props.username && this.props.phone.length === 11)
+        {(!!this.props.f_name && !!this.props.l_name && this.props.password.length >= 8 && !!this.props.username && this.props.phone.length === 12)
           ? <View style={{flexDirection:'row', height:50, margin:10}} >
               <View style={{flex:0.5}}></View>
               <TouchableOpacity style={[ styles.button, {marginVertical:20, flex:0.5, alignSelf:'flex-end'}]} onPress={ () => this.props.changeQuestions('centre')}>
